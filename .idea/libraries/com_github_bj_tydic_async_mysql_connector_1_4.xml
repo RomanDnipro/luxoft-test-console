@@ -1,0 +1,20 @@
+<component name="libraryTable">
+  <library name="com.github.bj-tydic:async-mysql-connector:1.4" type="repository">
+    <properties maven-id="com.github.bj-tydic:async-mysql-connector:1.4" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/async-mysql-connector-1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-5.1.42.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/netty-all-4.1.6.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/log4j-api-2.8.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/async-mysql-connector-1.4-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-5.1.42-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/netty-all-4.1.6.Final-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.2-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/log4j-api-2.8-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
