@@ -11,6 +11,7 @@ public class LineStatisticItem {
 
     /**
      * Initializes fields by line, using LineStatisticUtility class
+     *
      * @param line for statistic it
      */
     public LineStatisticItem(String line) {

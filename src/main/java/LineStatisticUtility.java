@@ -5,7 +5,7 @@ import java.util.Comparator;
 public class LineStatisticUtility {
 
     /**
-     * split words(symbols between 2 spaces) by the all whitespaces
+     * Split words(symbols between 2 spaces) by the all whitespaces
      *
      * @param line target string
      * @return array of words from line

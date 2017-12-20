@@ -17,6 +17,7 @@ public class Helper {
 
     /**
      * Adds all txt-files from the directory and all its subdirectories to the selected list
+     *
      * @param file by user request
      * @param txtFilesList target ArrayList
      */

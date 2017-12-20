@@ -51,6 +51,7 @@ public class DBWorker {
     }
 
     /**
+     * Makes a request to create a record in the path_by_users_query (PBUQ) table.
      * @param connection use to connect with db
      * @param fileName   file name received from user
      * @param filesList  list of files in the directory and subdirectories received by the user request
@@ -61,6 +62,8 @@ public class DBWorker {
     }
 
     /**
+     * Makes a request to update a record in the path_by_users_query (PBUQ) table.
+     *
      * @param connection use to connect with db
      * @param fileName   file name received from user
      * @param filesList  list of files in the directory and subdirectories received by the user request
@@ -113,6 +116,8 @@ public class DBWorker {
     }
 
     /**
+     * Makes a request to create a record in the txt_files_list (TFL) table.
+     *
      * @param connection        use to connect with db
      * @param filesStatisticMap store statistic per line of txt-file as value and this file as key
      * @throws SQLException

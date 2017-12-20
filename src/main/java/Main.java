@@ -18,7 +18,9 @@ public class Main {
         System.out.println("Enter the path to the directory, or the name of the .txt-file, for example: D:\\test2.txt, " +
                 "for recording statistics in the database and console:");
 
-        String fileName = new BufferedReader(new InputStreamReader(System.in)).readLine();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String fileName = reader.readLine();
+        reader.close();
         File file = new File(fileName);
         ArrayList<File> filesList = new ArrayList<>();
         Helper.getAllTxtFilesFromFolder(file, filesList);
@@ -31,13 +33,15 @@ public class Main {
             Driver driver = new FabricMySQLDriver();
             DriverManager.registerDriver(driver);
 
-            for (File f : filesList) {
-                filesStatisticMap.put(f, new FileStatisticForEachLine(f));
-            }
+            FileExecutor.handleFilesList(filesList, filesStatisticMap);
+
             System.out.println("***start writing in DB***");
+
+            //add new records to db
             dbWorker.addRecordToPathByUsersQueryTable(connection, fileName, filesList);
             dbWorker.addRecordToTxtFileListTable(connection, filesStatisticMap);
 
+            //log statistic to console
             for (FileStatisticForEachLine value : filesStatisticMap.values()) {
                 System.out.println(value);
             }
@@ -74,15 +78,3 @@ public class Main {
         }
     }
 }
-
-/*
- *
- * +1.исправить - сократить количество try-catch для SQLException
- * 2.комменты на английском, и всё на английском
- * +3.private переменные где можно
- * +4.java doc
- * +5.посмотреть какой наследник у SQLException при дублировании кода --- MySQLIntegrityConstraintViolationException !
- * 6.реализовать многопоточку Implement concurrent handling of each file in directory
- * +7.почему не обрабатывается FileNotFoundException ?
- *
- */
