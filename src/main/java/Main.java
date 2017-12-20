@@ -15,14 +15,17 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        try {
-            Driver driver = new FabricMySQLDriver();
-            DriverManager.registerDriver(driver);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Driver driver = new FabricMySQLDriver();
+//            DriverManager.registerDriver(driver);
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
         try (Connection connection = DriverManager.getConnection(CONNECTION_URL, USER_NAME, PASSWORD);
              Statement statement = connection.createStatement()) {
+
+            Driver driver = new FabricMySQLDriver();
+            DriverManager.registerDriver(driver);
 
             System.out.println("Введите путь к директории, или имя .txt-файла, например: D:\\test2.txt, для статистики:");
             HashMap<File, FileStatisticForEachLine> filesStatisticMap = new HashMap();
@@ -37,29 +40,38 @@ public class Main {
                 filesStatisticMap.put(f, new FileStatisticForEachLine(f));
             }
 
-            try {
-                //ДОБАВЛЯЕМ В ТАБЛИЦУ path_by_users_query ЗАПРОС ПОЛЬЗОВАТЕЛЯ И
-                //JSON ПРЕДСТАВЛЕНИЕ СПИСКА TXT-ФАЙЛОВ ПО ЭТОМУ ЗАПРОСУ
-                dbWorker.addRecordToPathByUsersQueryTable(connection, fileName, filesList);
+//            try {
+            //ДОБАВЛЯЕМ В ТАБЛИЦУ path_by_users_query ЗАПРОС ПОЛЬЗОВАТЕЛЯ И
+            //JSON ПРЕДСТАВЛЕНИЕ СПИСКА TXT-ФАЙЛОВ ПО ЭТОМУ ЗАПРОСУ
+            dbWorker.addRecordToPathByUsersQueryTable(connection, fileName, filesList);
 
-                //ДОБАВЛЯЕМ В ТАБЛИЦУ txt_files_list ПУТИ К TXT-ФАЙЛАМ И
-                //JSON ПРЕДСТАВЛЕНИЯ ОБЪЕКТОВ FileStatisticForEachLine
-                // ДЛЯ КАЖДОГО ФАЙЛА
-                dbWorker.addRecordToTxtFileListTable(connection, filesStatisticMap);
+            //ДОБАВЛЯЕМ В ТАБЛИЦУ txt_files_list ПУТИ К TXT-ФАЙЛАМ И
+            //JSON ПРЕДСТАВЛЕНИЯ ОБЪЕКТОВ FileStatisticForEachLine
+            // ДЛЯ КАЖДОГО ФАЙЛА
+            dbWorker.addRecordToTxtFileListTable(connection, filesStatisticMap);
 
-            } catch (SQLException e) {
-                if (e.getErrorCode() == 1062) {
-                    System.out.println("------все или некоторые записи уже существует в базе данных------");
-                } else {
-                    e.printStackTrace();
-                }
-            }
+//            } catch (SQLException e) {
+//                if (e.getErrorCode() == 1062) {
+//                    System.out.println("------все или некоторые записи уже существует в базе данных------");
+//                } else {
+//                    e.printStackTrace();
+//                }
+//            }
 
             for (FileStatisticForEachLine value : filesStatisticMap.values()) {
                 System.out.println(value);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            if (e.getErrorCode() == 1062) {
+                System.out.println("------все или некоторые записи уже существует в базе данных------");
+            } else {
+                e.printStackTrace();
+            }
         }
     }
 }
+
+/*
+ *
+ * 1.исправить - сократить количество try-catch для SQLException
+ */
