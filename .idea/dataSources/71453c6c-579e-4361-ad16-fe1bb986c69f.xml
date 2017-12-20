@@ -932,7 +932,7 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="235" parent="232" name="path_quary">
+    <column id="235" parent="232" name="path_query">
       <Position>2</Position>
       <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
@@ -948,8 +948,8 @@
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="238" parent="232" name="path_quary_UNIQUE">
-      <ColNames>path_quary</ColNames>
+    <index id="238" parent="232" name="path_query_UNIQUE">
+      <ColNames>path_query</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="239" parent="232" name="PRIMARY">
@@ -961,9 +961,9 @@
       <ColNames>id</ColNames>
       <UnderlyingIndexName>id_UNIQUE</UnderlyingIndexName>
     </key>
-    <key id="241" parent="232" name="path_quary_UNIQUE">
-      <ColNames>path_quary</ColNames>
-      <UnderlyingIndexName>path_quary_UNIQUE</UnderlyingIndexName>
+    <key id="241" parent="232" name="path_query_UNIQUE">
+      <ColNames>path_query</ColNames>
+      <UnderlyingIndexName>path_query_UNIQUE</UnderlyingIndexName>
     </key>
     <column id="242" parent="233" name="id">
       <Position>1</Position>
@@ -974,7 +974,7 @@
     </column>
     <column id="243" parent="233" name="file_path">
       <Position>2</Position>
-      <DataType>varchar(100)|0</DataType>
+      <DataType>varchar(1000)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="244" parent="233" name="json_of_file_statistic">

@@ -10,10 +10,15 @@ public class FileStatisticForEachLine {
     private File file;
     private ArrayList<LineStatisticItem> lineStatisticItems;
 
+    /**
+     * Construct object statistic data for all file's lines
+     * @param txtFile target txt file for statistic
+     * @throws IOException
+     */
     public FileStatisticForEachLine(File txtFile) throws IOException {
         this.file = txtFile;
         lineStatisticItems = new ArrayList<>();
-        List<String> lines = null;
+        List<String> lines;
         try {
             lines = Files.readAllLines(Paths.get(txtFile.getPath()), StandardCharsets.UTF_8);
         } catch (IOException e) {

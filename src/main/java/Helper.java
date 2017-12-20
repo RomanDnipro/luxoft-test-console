@@ -4,34 +4,36 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class Helper {
-    public static String getStatisticInfoByTxtFile(FileStatisticForEachLine file) {
-        return "";
-    }
 
+    /**
+     * Deserialize json to FileStatisticForEachLine object
+     *
+     * @param json json notation of FileStatisticForEachLine object
+     * @return FileStatisticForEachLine object from json
+     */
     public static FileStatisticForEachLine getFileStatisticLikeObj(String json) {
         return new Gson().fromJson(json, FileStatisticForEachLine.class);
     }
 
-    public static String getFileStatisticLikeString(String json) {
-        return getFileStatisticLikeObj(json).toString();
-    }
-
-    public static String getJsonOfTxtFileList(String filePath) {
-        DBWorker dbWorker = new DBWorker();
-
-        return "";
-    }
-
+    /**
+     * Adds all txt-files from the directory and all its subdirectories to the selected list
+     * @param file by user request
+     * @param txtFilesList target ArrayList
+     */
     public static void getAllTxtFilesFromFolder(File file, ArrayList<File> txtFilesList) {
-        if (file.isFile()) {
-            //если файл имеет расширение .txt
-            if (file.getPath().endsWith(".txt")) {
-                txtFilesList.add(file);
+        try {
+            if (file.isFile()) {
+                //if file is .txt
+                if (file.getPath().endsWith(".txt")) {
+                    txtFilesList.add(file);
+                }
+            } else {
+                for (File f : file.listFiles()) {
+                    getAllTxtFilesFromFolder(f, txtFilesList);
+                }
             }
-        } else {
-            for (File f : file.listFiles()) {
-                getAllTxtFilesFromFolder(f, txtFilesList);
-            }
+        } catch (NullPointerException e) {
+            System.out.println("Folder is empty or File is not exist");
         }
     }
 }

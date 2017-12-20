@@ -33,7 +33,7 @@ public class LineStatisticItemTest {
     public void findAverageWordLength() {
         double actual = lineStatistic.getAverageWordLength();
         double expected = 4.3;
-        Assert.assertTrue(actual == actual);
+        Assert.assertTrue(actual == expected);
     }
 
     @Test

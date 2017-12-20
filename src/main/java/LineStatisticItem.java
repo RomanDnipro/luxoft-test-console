@@ -9,6 +9,10 @@ public class LineStatisticItem {
     private int lineLength;
     private double averageWordLength;
 
+    /**
+     * Initializes fields by line, using LineStatisticUtility class
+     * @param line for statistic it
+     */
     public LineStatisticItem(String line) {
         this.line = line;
         words = LineStatisticUtility.splitWordsByWhitespaces(line);

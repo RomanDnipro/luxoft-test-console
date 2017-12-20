@@ -6,8 +6,8 @@ import static org.junit.Assert.assertNotEquals;
 
 
 public class LineStatisticUtilityTest {
-    //task point : word - symbols between 2 spaces
 
+    //task point : word - symbols between 2 spaces
     String testLine1 = "строка для тестов номер 1.";
     String testLine2 = "        строка    для тестов    № 1.         !          ";
     String[] wordsArr = {"мама", "мыла", "рамку"};
@@ -59,13 +59,13 @@ public class LineStatisticUtilityTest {
     public void calcAverageWordsLength() throws Exception {
         double actual = LineStatisticUtility.calcAverageWordsLength(testLine1);
         double expected = 4.4;
-        Assert.assertTrue(actual == actual);
+        Assert.assertTrue(actual == expected);
     }
 
     @Test
     public void calcAverageWordsLength3() throws Exception {
         double actual = LineStatisticUtility.calcAverageWordsLength("");
         double expected = 0.0;
-        Assert.assertTrue(actual == actual);
+        Assert.assertTrue(actual == expected);
     }
 }
